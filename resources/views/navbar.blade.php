@@ -9,10 +9,10 @@
                     <a class="nav-link" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Produtos</a>
+                    <a class="nav-link" aria-current="page" href="produtos">Produtos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Categorias</a>
+                    <a class="nav-link" aria-current="page" href="categorias">Categorias</a>
                 </li>
             </ul>
         </div>
