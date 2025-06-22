@@ -11,16 +11,20 @@
         body{
             padding: 20px;
         }
+        .navbar {
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        @component('navbar')
+        @endcomponent
         <main role="main"> 
             @hasSection ('body')
                 @yield('body')
             @endif
         </main>
-        
     </div>
     <script src="{{ asset('js/app.js') }}" type="text/javascript">
     
