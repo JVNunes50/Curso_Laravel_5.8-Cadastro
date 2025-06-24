@@ -4,15 +4,16 @@
     <div class="card border">
         <div class="card-body">
             <div class="form-group">
-                <div class="form-group">
-                    <select class="custom-select mr-sm-2">
-                        <option selected>Categorias cadastradas</option>
-                        @foreach ($cats as $cat)
-                            <option name="categoria_id" value="{{ $cat->id }}">{{ $cat->nome }}</option>
-                        @endforeach
-                    </select>
-                </div>
                 <form action="/produtos" method="post">
+                    @csrf
+                    <div class="form-group">
+                        <select class="custom-select mr-sm-2">
+                            <option selected>Categorias cadastradas</option>
+                            @foreach ($cats as $cat)
+                                <option name="categoria_id" value="{{ $cat->id }}">{{ $cat->nome }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <label for="nomeProdut">Nome do produto</label>
                     <input type="text" name="nomeProduto" id="nomeProduto" class="form-control" placeholder="Nome">
 
