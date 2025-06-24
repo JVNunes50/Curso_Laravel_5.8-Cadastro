@@ -25,3 +25,4 @@ Route::get('/categorias/apagar/{id}', 'ControladorCategoria@destroy');
 Route::post('/categorias/{id}', 'ControladorCategoria@update');
 
 Route::get('/produtos/criar', 'ControladorProduto@create');
+Route::post('/produtos', 'ControladorProduto@store');
