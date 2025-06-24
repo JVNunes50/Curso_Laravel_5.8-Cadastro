@@ -1,5 +1,12 @@
 @extends('layout.app', ["current" => "produtos"])
 
 @section('body')
-    <h4>Produtos</h4>
+    <div class="card border">
+        <div class="card-body">
+            <h5>Cadastro de Produtos</h5>
+            <div class="btn">
+                <a href="/produtos/criar/" class="btn btn-sm btn-primary">Novo Produto</a>
+            </div>
+        </div>
+    </div>
 @endsection
