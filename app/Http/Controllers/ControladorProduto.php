@@ -40,9 +40,10 @@ class ControladorProduto extends Controller
     {
         $prod = new Produto();
         $prod =  Produto::create([
-            'nome'=>'nomeProduto',
-            'estoque'=>'numEstoque',
-            'preco'=>'precoProduto'
+            'categoria_id'=>$request->input('categoria_id'),
+            'nome'=>$request->input('nomeProduto'),
+            'estoque'=>$request->input('numEstoque'),
+            'preco'=>$request->input('precoProduto')
         ]);
         $prod->save();
         return redirect('produtos');
