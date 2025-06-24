@@ -5,7 +5,7 @@
         <div class="card-body">
             <h5>Cadastro de Produtos</h5>
             <div class="btn">
-                <a href="/produtos/criar/" class="btn btn-sm btn-primary">Novo Produto</a>
+                <a href="/produtos/criar/" class="btn btn-sm btn-primary" role="button">Novo Produto</a>
             </div>
         </div>
     </div>

@@ -16,8 +16,7 @@ class ControladorProduto extends Controller
      */
     public function index()
     {   
-        $cats = Categoria::all();
-        return view('produtos', compact('cats'));
+        return view('produtos');
     }
 
     /**
@@ -27,7 +26,8 @@ class ControladorProduto extends Controller
      */
     public function create()
     {
-        return view('novoproduto');
+        $cats = Categoria::all();
+        return view('novoproduto', compact('cats'));
     }
 
     /**
