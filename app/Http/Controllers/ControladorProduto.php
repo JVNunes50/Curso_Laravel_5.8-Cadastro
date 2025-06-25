@@ -16,7 +16,9 @@ class ControladorProduto extends Controller
      */
     public function index()
     {   
-        return view('produtos');
+        $prods = Produto::all();
+        $cats = Categoria::all();
+        return view('produtos', compact('prods', 'cats'));
     }
 
     /**
