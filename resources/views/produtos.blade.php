@@ -25,6 +25,10 @@
                                         <td>{{ $prod->nome }}</td>
                                         <td>{{ $prod->preco }}</td>
                                         <td>{{ $prod->estoque }}</td>
+                                        <td>
+                                            <a href="/produtos/editar/{{ $prod->id }}" class="btn btn-sm btn-primary">Editar</a>
+                                            <a href="/produtos/apagar/{{ $prod->id }}" class="btn btn-sm btn-danger">Apagar</a>
+                                        </td>
                                     </tr>
                                 @endif
                             @endforeach
