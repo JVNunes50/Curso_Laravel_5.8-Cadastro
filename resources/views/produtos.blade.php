@@ -3,27 +3,33 @@
 @section('body')
     <div class="card border">
         <div class="card-body">
-            <h5>Cadastro de Produtos</h5>
-            <div class="btn btn-sm">
-                <a href="/produtos/criar/" class="btn btn-sm btn-primary" role="button">Novo Produto</a>
-            </div>
+                <h5>Cadastro de Produtos</h5>
+            <p class="fs-5">Produtos cadastrados por categoria.</p>
             @if (count($cats) > 0)
                 @foreach ($cats as $cat)
                     <p class="fs-4">{{ $cat->nome }}</p>
-                    <div class="d-flex p-2">
-                        <ul class="list-group">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Preço</th>
+                                <th scope="col">Quantidade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
                             @foreach ($prods as $prod)
                                 @if ($prod->categoria_id == $cat->id)
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <div class="d-flex p-2">Id: {{ $prod->id }}</div>
-                                        <div class="d-flex p-2">Nome: {{ $prod->nome }}</div>
-                                        <div class="d-flex p-2">{{ $prod->preco }}</div>
-                                        <div class="d-flex p-2"><span class="badge bg-primary rounded-pill">{{ $prod->estoque }}</span></div>
-                                    </li>
+                                    <tr>
+                                        <th scope="row">{{ $prod->id }}</th>
+                                        <td>{{ $prod->nome }}</td>
+                                        <td>{{ $prod->preco }}</td>
+                                        <td>{{ $prod->estoque }}</td>
+                                    </tr>
                                 @endif
                             @endforeach
-                        </ul>
-                    </div>
+                        </tbody>
+                    </table>
                 @endforeach
             @else
                 <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -38,6 +44,9 @@
                     </div>
                 </div>
             @endif
+            <div class="btn btn-sm">
+                <a href="/produtos/criar/" class="btn btn-sm btn-primary" role="button">Novo Produto</a>
+            </div>
         </div>
     </div>
 @endsection
