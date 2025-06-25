@@ -7,10 +7,10 @@
                 <form action="/produtos" method="post">
                     @csrf
                     <div class="form-group">
-                        <select class="custom-select mr-sm-2">
+                        <select name="cat_id" class="custom-select mr-sm-2">
                             <option selected>Categorias cadastradas</option>
                             @foreach ($cats as $cat)
-                                <option name="categoria_id" value="{{ $cat->id }}">{{ $cat->nome }}</option>
+                                <option value="{{ $cat->id }}">{{ $cat->nome }}</option>
                             @endforeach
                         </select>
                     </div>

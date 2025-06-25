@@ -10,6 +10,6 @@ class Produto extends Model
         'categoria_id',
         'nome',
         'estoque',
-        'preco'
+        'preco',
     ];
 }
