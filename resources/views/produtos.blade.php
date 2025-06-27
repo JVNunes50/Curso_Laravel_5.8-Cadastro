@@ -48,9 +48,9 @@
                                 <input type="number" name="precoProduto" id="precoProduto" placeholder="Preço do produto" class="form-control">
                             </div>
                             <div class="form-group">
-                            <label for="departamentoProduto" class="control-label">Departamento</label>
+                            <label for="categoriaProduto" class="control-label">Categoria</label>
                             <div class="input-group">
-                                <select id="departamentoProduto" class="form-control">
+                                <select id="categoriaProduto" class="form-control">
 
                                 </select>
                             </div>
@@ -68,11 +68,23 @@
 @section('javascript')
     <script type="text/javascript">
         function novoProduto(){
+            $('#id').val('');
             $('#nomeProduto').val('');
             $('#quantidadeProduto').val('');
             $('#precoProduto').val('');
-            $('#departamentoProduto').val('');
             $('#dlgProdutos').modal('show');
         }
+        function carregarCategorias(){
+            $.getJSON('api/categorias', function(data) {
+                console.log(data);
+                for(i=0; i<data.length; i++){
+                    opcao = '<option value ="' + data[i].id + '">' +data[i].nome + '</option>';
+                    $('#categoriaProduto').append(opcao);
+                }
+            });
+        }
+        $(function(){
+            carregarCategorias()
+        })
     </script>
 @endsection
