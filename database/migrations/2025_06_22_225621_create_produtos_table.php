@@ -18,7 +18,7 @@ class CreateProdutosTable extends Migration
             $table->string('nome');
             $table->integer('estoque');
             $table->float('preco');
-            $table->integer('categoria_id')->unsigned();
+            $table->unsignedBigInteger('categoria_id');
             $table->foreign('categoria_id')->references('id')->on('categorias');
             $table->timestamps();
         });
