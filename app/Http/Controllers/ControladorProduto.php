@@ -46,12 +46,10 @@ class ControladorProduto extends Controller
     public function store(Request $request)
     {
         $prod = new Produto();
-        $prod =  Produto::create([
-            'nome'=>$request->input('nomeProduto'),
-            'estoque'=>$request->input('numEstoque'),
-            'preco'=>$request->input('precoProduto'),
-            'categoria_id'=>$request->input('cat_id'),
-        ]);
+        $prod->nome = $request->input('nomeProduto');
+        $prod->estoque = $request->input('numEstoque');
+        $prod->preco = $request->input('precoProduto');
+        $prod->categoria_id = $request->input('cat_id');
         $prod->save();
         return json_encode($prod);
     }
