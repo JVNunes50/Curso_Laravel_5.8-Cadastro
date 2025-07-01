@@ -47,13 +47,13 @@ class ControladorProduto extends Controller
     {
         $prod = new Produto();
         $prod =  Produto::create([
-            'categoria_id'=>$request->input('cat_id'),
             'nome'=>$request->input('nomeProduto'),
             'estoque'=>$request->input('numEstoque'),
             'preco'=>$request->input('precoProduto'),
+            'categoria_id'=>$request->input('cat_id'),
         ]);
         $prod->save();
-        return redirect('produtos');
+        return json_encode($prod);
     }
 
     /**
