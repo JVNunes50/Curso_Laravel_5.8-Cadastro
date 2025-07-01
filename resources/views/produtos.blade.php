@@ -115,6 +115,24 @@
             });
         }
 
+        function criarProduto(){
+            prod = { // Os nomes dos objestos devem estar nos atributos do controller create
+                nome: $("#nomeProduto").val(), 
+                estoque: $("#quantidadeProduto").val(),
+                preco: $("#precoProduto").val(),
+                categoria_id: $("#categoriaProduto").val()
+            };
+            $.post("/api/produtos", prod, function(data){
+                console.log(data);
+            });
+        }
+
+        $("#formProduto").submit(function(event){
+            event.preventDefault();
+            criarProduto();
+            $("#dlgProdutos").modal('hide');
+        });
+
         $(function(){
             carregarCategorias();
             carregarProdutos();
