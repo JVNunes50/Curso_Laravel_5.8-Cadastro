@@ -3,8 +3,8 @@
 @section('body')
     <div class="card border">
         <div class="card-body">
-            <h5 class="card-title">Cadastro de Categorias</h5>
-            <table class="table table-ordered table-hover">
+            <h5 class="card-title">Cadastro de Produtos</h5>
+            <table class="table table-ordered table-hover" id="tabelaProdutos">
                 <thead>
                     <tr>
                         <th>Código</th>
@@ -20,7 +20,7 @@
             </table>
         </div>
         <div class="card-footer">
-            <button class="btn btn-sm btn-primary" role="button" onclick="novoProduto()">Nova Categoria</button>
+            <button class="btn btn-sm btn-primary" role="button" onclick="novoProduto()">Novo Produto</button>
         </div>
     </div>
     <div class="modal" tabindex="-1" role="dialog" id="dlgProdutos">
@@ -56,7 +56,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="model-footer">
+                    <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Salvar</button>
                         <button type="cancel" class="btn btn-secondary" data-dissmiss="modal">Cancelar</button>
                     </div>
@@ -75,7 +75,7 @@
             $('#dlgProdutos').modal('show');
         }
         function carregarCategorias(){
-            $.getJSON('api/categorias', function(data) {
+            $.getJSON('/api/categorias', function(data) {
                 console.log(data);
                 for(i=0; i<data.length; i++){
                     opcao = '<option value ="' + data[i].id + '">' +data[i].nome + '</option>';
@@ -83,8 +83,34 @@
                 }
             });
         }
+
+        function montarLinha(p) {
+            var linha = "<tr>" +
+                "<td>" + p.id + "</td>" +
+                "<td>" + p.nome + "</td>" +
+                "<td>" + p.estoque + "</td>" +
+                "<td>" + p.preco + "</td>" +
+                "<td>" + p.categoria_id + "</td>" +
+                "<td>" + 
+                    '<button class="btn btn-xs btn-primary"> Editar </button>' + 
+                    '<button class="btn btn-xs btn-danger"> Apagar </button>' +
+                "</td>" +
+                "</tr>";
+            return linha;
+        }
+
+        function carregarProdutos() {
+            $.getJSON('/api/produtos', function(produtos){
+                for(i=0; i<produtos.length; i++){
+                    linha = montarLinha(produtos[i]);
+                    $('#tabelaProdutos>tbody').append(linha);
+                }
+            });
+        }
+
         $(function(){
-            carregarCategorias()
+            carregarCategorias();
+            carregarProdutos();
         })
     </script>
 @endsection
