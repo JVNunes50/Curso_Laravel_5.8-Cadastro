@@ -129,8 +129,9 @@
                     e = linhas.filter(function(i, elemento){
                         return elemento.cells[0].textContent == id;
                     });
-                    if (e)
+                    if(e){
                         e.remove();
+                    }
                 },
                 error: function(error){
                     console.log(error);
@@ -161,9 +162,35 @@
             });
         }
 
+        function salvarProduto(){
+            prod = {
+                id: $("#id").val(),
+                nome: $("#nomeProduto").val(), 
+                estoque: $("#quantidadeProduto").val(),
+                preco: $("#precoProduto").val(),
+                categoria_id: $("#categoriaProduto").val()
+            };
+            $.ajax({
+                type: "PUT",
+                url: "/api/produtos/" + prod.id,
+                context: this,
+                data: prod,
+                success: function(){
+                    console.log('Salvou, OK');
+                },
+                error: function(error){
+                    console.log(error);
+                }
+            });
+        }
+
         $("#formProduto").submit(function(event){
             event.preventDefault();
-            criarProduto();
+            if($("id").val() != ''){   
+                salvarProduto();
+            }else{
+                criarProduto();
+            }
             $("#dlgProdutos").modal('hide');
         });
 
