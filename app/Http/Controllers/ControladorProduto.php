@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Categoria;
 use App\Produto;
-
+use PhpParser\Node\Stmt\Return_;
 
 class ControladorProduto extends Controller
 {
@@ -110,7 +110,8 @@ class ControladorProduto extends Controller
         $prod = Produto::find($id);
         if (isset($prod)){
             $prod->delete();
+            return response('OK', 200);
         }
-        return redirect('produtos');
+        return response('Produto não encontrado', 404);
     }
 }
