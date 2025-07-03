@@ -186,7 +186,7 @@
 
         $("#formProduto").submit(function(event){
             event.preventDefault();
-            if($("id").val() != ''){   
+            if($("#id").val() != ''){   
                 salvarProduto();
             }else{
                 criarProduto();
